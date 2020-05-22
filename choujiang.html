@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现金抽奖</title>
+    <style>
+        *,
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .warp {
+            height: 100%;
+            width: 100%;
+            background-image: url(background.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .taitou {
+            background-image: url(title.png);
+            background-size: 80% 12%;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 7%;
+            left: 10%;
+        }
+
+        .lunpan {
+            background-image: url(table.png);
+            background-size: 80% 50%;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 25%;
+            left: 10%;
+        }
+        .yuan{
+            width: 80%;
+            height: 45%;
+            background-image: url(lunpan.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            transition:3s;
+        }
+        .dianji{
+            width: 20%;
+            height: 13%;
+            background-image: url(choujiang.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 16%;
+            left: 30%;
+        }
+
+        .xinxi {
+            height: 15%;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tishi {
+            line-height: 20px;
+            height: 50%;
+            color: #fff;
+        }
+
+        .tishi span {
+            color: #fedd52;
+        }
+
+        .zhongjiang {
+            height: 30%;
+            width: 80%;
+            margin: 0 auto;
+            color: #fff;
+            background-image: url(carousel.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 大背景 -->
+    <div class="warp">
+        <!--  抬头-->
+        <div class="taitou"></div>
+        <!-- 轮盘 -->
+        <div class="lunpan">
+            <div class="yuan">
+            </div>
+            <div class="dianji">
+            </div>
+        </div>
+        <!-- 提示信息 and 中奖信息 -->
+        <div class="xinxi">
+            <div class="tishi">
+                你还有<span> 1 </span>次中奖机会
+            </div>
+            <div class="zhongjiang">
+                恭喜 李*** 获得天清百舒1盒
+            </div>
+        </div>
+    </div>
+    <script>
+     
+          var json=[ "恭喜 王*** 获得淮盛堂1盒","恭喜 爱*** 获得1000元红包","恭喜 陈** 获得同款产品1盒","恭喜 侯*** 获得利方康前1盒","恭喜 何*** 获得淮盛堂1盒","恭喜 牛*** 获得利方康前1盒"]
+          var i = 0;
+          var zj = document.getElementsByClassName("zhongjiang")[0];
+          var dj= document.getElementsByClassName("dianji")[0];
+          var yp=document.getElementsByClassName("yuan")[0];
+          var sp = document.getElementsByTagName("span")[0];
+          var s=0;
+          time =setInterval(function(){
+            if(i<json.length){
+                zj.innerHTML=json[i]
+                i++
+            }else{
+                i=0;
+            }
+          },3000)
+          dj.onclick=function(){
+              if(s==0){
+                  s++;
+                sp.innerHTML="0";
+            var a =Math.floor(Math.random()*10)
+              if(a<=4){
+                yp.style="transform: rotate(1110deg)"
+                // alert("谢谢参与")
+              }else if(a==5){
+                yp.style="transform: rotate(1170deg)"
+                // alert("恭喜您获得同款产品一盒")
+              }else if(a==6){
+                yp.style="transform: rotate(1230deg)"
+                // alert("恭喜您获得天清百舒一盒")
+              }else if(a==7){
+                yp.style="transform: rotate(1350deg)"
+                // alert("恭喜您获得淮盛堂一盒")
+              }else{
+                yp.style="transform: rotate(1290deg)"
+                // alert("恭喜您获得利方康前一盒")
+              }
+              }else{
+                alert("你已经没有抽奖机会了")
+              }
+             
+              
+           
+          }
+    </script>
+</body>
+
+</html>
